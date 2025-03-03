@@ -1,3 +1,5 @@
+___________________________________________________________![alt text](public/favicons/favicon.ico) _______________________________________________________
+
 # DATASET GENERATOR | Ai Powered image dataset generator
 
 ## Generative AI image dataset generator UI
