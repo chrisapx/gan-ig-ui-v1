@@ -1,4 +1,6 @@
-# Generative AI image dataset generator UI
+# DATASET GENERATOR | Ai Powered image dataset generator
+
+## Generative AI image dataset generator UI
 
 ## _*How it works*_
 
