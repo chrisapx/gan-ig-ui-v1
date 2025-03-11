@@ -17,25 +17,30 @@ const Home = () => {
     },
   });
 
+  
+
   const handleUpload = async () => {
     if (!selectedFile) return;
     setIsUploading(true);
 
     const formData = new FormData();
-    formData.append("file", selectedFile);
+    formData.append("files", selectedFile);
 
     try {
-      const response = await axios.post("http://localhost:5000/upload", formData, {
+      const response = await axios.post("http://127.0.0.1:5000/generate", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      if (response.data.downloadUrl.endsWith(".zip")) {
-        setDownloadUrl(response.data.downloadUrl);
+      if (response.data.download_url) {
+        setTimeout(() => {
+          setDownloadUrl(response.data.download_url);
+          setIsUploading(false);
+        }, 3000);
+      } else {
+        console.log("An error occured");
       }
     } catch (error) {
       console.error("Upload failed:", error);
-    } finally {
-      setIsUploading(false);
     }
   };
 
@@ -89,7 +94,7 @@ const Home = () => {
             selectedFile && !isUploading ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >
-          {isUploading ? "Uploading..." : "Upload & Generate"}
+          {isUploading ? "Generating..." : "Upload & Generate"}
         </button>
       </div>
 
